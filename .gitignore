@@ -9,3 +9,7 @@ dist
 
 #sqlite
 *.sqlite
+
+# Wireframe source
+.~lock.wireframe.odg#
+wireframe.odg
