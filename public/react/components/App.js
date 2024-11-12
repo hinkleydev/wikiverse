@@ -5,6 +5,7 @@ import { PagesList } from './PagesList'
 import apiURL from '../api'
 
 export const App = () => {
+  //const [selectedPage, setSelectedPage] = useState()
   const [pages, setPages] = useState([])
 
   useEffect(() => {
@@ -21,11 +22,18 @@ export const App = () => {
     fetchPages()
   }, [])
 
-  return (
+  let content;
+  //if (selectedPage == null) {
+  content =(
 		<main>
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 			<PagesList pages={pages} />
-		</main>
-  )
+		</main>)
+  //)} else {
+    //content = <ArticleView slug={selectedPage} />
+    //content = <p>{selectedPage}</p>;
+  //}
+
+  return content;
 }
