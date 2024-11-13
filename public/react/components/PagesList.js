@@ -14,7 +14,9 @@ export const PagesList = ({ pages }) => {
 		goback={() => setSelectedPage(undefined)} 
 		setEditorMode={setEditorMode}/>);
 	} else {
-		content = (<EditorView page={selectedPage} setEditorMode={setEditorMode} />)
+		content = (<EditorView page={selectedPage} 
+			setEditorMode={setEditorMode}
+			setSelectedPage={setSelectedPage} />)
 	}
 	return content;
 }
