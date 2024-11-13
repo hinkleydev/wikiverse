@@ -1,10 +1,15 @@
 import React from 'react'
-import apiURL from '../api'
 
-export const ArticleView = ({slug, goback}) => {
-    //const page = await fetch(apiURL + '/wiki/' + slug)
+export const ArticleView = ({page, goback, setEditorMode}) => {
+    // The API returns everything there's absolutely no point making more requests
     return (<>
-    <span onClick={goback}>Go back</span>
-    <h1>{slug}</h1>
+    <span onClick={goback} className="return-button">Go back</span>
+    <h1>{page.title}</h1>
+    <div className="article-options">
+        <span><b>View</b> | <u onClick={() => setEditorMode(true)}>Edit</u></span>
+    </div>
+    <article>
+        {page.content}
+    </article>
     </>)
 }
