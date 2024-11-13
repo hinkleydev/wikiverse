@@ -1,15 +1,12 @@
 import React, {useState} from 'react'
 import apiURL from '../api';
+import { ArticleForm } from './ArticleForm';
 
 export const EditorView = ({page, setEditorMode, setSelectedPage}) => {
-    const [title, setTitle] = useState(page.title);
-    const [content, setContent] = useState(page.content);
-    const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
 
-    async function submitEdits(e) {
+    async function submitEdits(e, articleData) {
         e.preventDefault();
-        const articleData = {title, content, name, email, tags : "tag1 tag2"};
+        //const articleData = {title, content, name, email, tags : "tag1 tag2"};
         const response = await fetch(apiURL + '/wiki/' + page.slug, {
             method: "PUT",
             headers: {
@@ -35,17 +32,7 @@ export const EditorView = ({page, setEditorMode, setSelectedPage}) => {
         <span><u onClick={() => setEditorMode(false)}>View</u> | <b>Edit</b></span>
     </div>
     <article>
-        <form onSubmit={submitEdits}>
-            <label for="title-editor">Title</label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
-            <label for="content-editor">Content</label>
-            <textarea id="content-editor" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-            <label for="username-editor">Author username</label>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)}></input>
-            <label for="email-editor">Author email</label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-            <input type="submit" value="submit"></input>
-        </form>
+        <ArticleForm title={page.title} content={page.content} tags={page.tags} submit={submitEdits}/>
     </article>
     </>)
 }
