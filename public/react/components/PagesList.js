@@ -8,7 +8,7 @@ export const PagesList = ({ pages }) => {
 	if (selectedPage == undefined) {
   		content = pages.map((page, idx) => {return <Page setSelectedPage={setSelectedPage} page={page} key={idx} />})
 	} else (
-		content = <ArticleView slug={selectedPage} />
+		content = <ArticleView slug={selectedPage} goback={() => setSelectedPage(undefined)} />
 	)
 	return content;
 }
