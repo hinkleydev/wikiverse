@@ -20,7 +20,8 @@ export const PagesList = ({ pages, fetchPages }) => {
 	} else if (!editorMode && !addPageMode) {
 		content = (<ArticleView page={selectedPage} 
 		goback={() => setSelectedPage(undefined)} 
-		setEditorMode={setEditorMode}/>);
+		setEditorMode={setEditorMode}
+		fetchPages={fetchPages} />);
 	} else if (editorMode && !addPageMode) {
 		content = (<EditorView page={selectedPage} 
 			setEditorMode={setEditorMode}
