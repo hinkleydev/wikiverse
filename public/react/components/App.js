@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PagesList } from './PagesList'
 
+import './../../style.css'
 // import and prepend the api url to any fetch calls
 import apiURL from '../api'
 
@@ -26,10 +27,11 @@ export const App = () => {
 
   let content;
   content =(
-		<main>
-      <h1>WikiVerse</h1>
-			<h2>An interesting 📚</h2>
-			<PagesList pages={pages} fetchPages={fetchPages}/>
-		</main>)
+    <body>
+		  <main>
+        <h1>WikiVerse</h1>
+			  <PagesList pages={pages} fetchPages={fetchPages}/>
+		  </main>
+    </body>)
   return content;
 }

@@ -14,7 +14,7 @@ export const ArticleView = ({page, goback, setEditorMode, fetchPages}) => {
     }
     return (<>
     <span onClick={goback} className="return-button">Go back</span>
-    <h1>{page.title}</h1>
+    <h2>{page.title}</h2>
     <div className="article-options">
         <span><b>View</b> | <u onClick={() => setEditorMode(true)}>Edit</u></span>
     </div>

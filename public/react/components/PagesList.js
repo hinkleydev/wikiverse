@@ -15,8 +15,7 @@ export const PagesList = ({ pages, fetchPages }) => {
 			{return <Page setSelectedPage={setSelectedPage} 
 			page={page} key={idx} />}
 		));
-		content = <>{tmp}<p onClick={() => setAddPageMode(true)}>Add page</p></>
-		//+ <p onClick={() => setAddPageMode(true)}>Add page</p>
+		content = <><h2>Index</h2><ul>{tmp}</ul><u><p onClick={() => setAddPageMode(true)}>Add page</p></u></>
 	} else if (!editorMode && !addPageMode) {
 		content = (<ArticleView page={selectedPage} 
 		goback={() => setSelectedPage(undefined)} 
