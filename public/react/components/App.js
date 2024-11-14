@@ -32,7 +32,7 @@ export const App = () => {
 		<main>
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
-			<PagesList pages={pages} fetchPages={fetchPages} addPage={addPage}/>
+			<PagesList pages={pages} fetchPages={fetchPages}/>
 		</main>)
   //)} else {
     //content = <ArticleView slug={selectedPage} />

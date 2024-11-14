@@ -4,7 +4,7 @@ import { ArticleView } from './ArticleView';
 import { EditorView } from './EditorView';
 import { AddModeView } from './AddModeView';
 
-export const PagesList = ({ pages, addPage }) => {
+export const PagesList = ({ pages, fetchPages }) => {
 	const [selectedPage, setSelectedPage] = useState(undefined);
 	const [editorMode, setEditorMode] = useState(false);
 	const [addPageMode, setAddPageMode] = useState(false);
@@ -26,7 +26,7 @@ export const PagesList = ({ pages, addPage }) => {
 			setEditorMode={setEditorMode}
 			setSelectedPage={setSelectedPage} />)
 	} else if (addPageMode) {
-		content = <AddModeView setAddPageMode={setAddPageMode} pages={pages} addPage={addPage}/>
+		content = <AddModeView setAddPageMode={setAddPageMode} fetchPages={fetchPages}/>
 	}
 	return content;
 }

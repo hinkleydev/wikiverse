@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import apiURL from '../api';
 import { ArticleForm } from './ArticleForm';
 
-export const AddModeView = ({setAddPageMode, addPage}) => {
+export const AddModeView = ({setAddPageMode, fetchPages}) => {
 
     async function submitArticle(e, articleData) {
         e.preventDefault();
@@ -18,7 +18,7 @@ export const AddModeView = ({setAddPageMode, addPage}) => {
         });
         if (response.status == 200) {
             const parsed = await response.json();
-            addPage(parsed);
+            await fetchPages();
             alert("Article created!");
             setAddPageMode(false);
         } else {
