@@ -8,19 +8,23 @@ export const App = () => {
   //const [selectedPage, setSelectedPage] = useState()
   const [pages, setPages] = useState([])
 
-  useEffect(() => {
-    async function fetchPages () {
-      try {
-        const response = await fetch(`${apiURL}/wiki`)
-        const pagesData = await response.json()
-        setPages(pagesData)
-      } catch (err) {
-        console.log('Oh no an error! ', err)
-      }
+  async function fetchPages () {
+    console.log("fetchPages")
+    try {
+      const response = await fetch(`${apiURL}/wiki`)
+      const pagesData = await response.json()
+      setPages(pagesData)
+    } catch (err) {
+      console.log('Oh no an error! ', err)
     }
-
+  }
+  useEffect(() => {
     fetchPages()
   }, [])
+
+  function addPage(page) {
+    setPages([...pages, page]);
+  }
 
   let content;
   //if (selectedPage == null) {
@@ -28,7 +32,7 @@ export const App = () => {
 		<main>
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
-			<PagesList pages={pages} />
+			<PagesList pages={pages} fetchPages={fetchPages} addPage={addPage}/>
 		</main>)
   //)} else {
     //content = <ArticleView slug={selectedPage} />
