@@ -5,11 +5,9 @@ import { PagesList } from './PagesList'
 import apiURL from '../api'
 
 export const App = () => {
-  //const [selectedPage, setSelectedPage] = useState()
   const [pages, setPages] = useState([])
 
   async function fetchPages () {
-    console.log("fetchPages")
     try {
       const response = await fetch(`${apiURL}/wiki`)
       const pagesData = await response.json()
@@ -27,17 +25,11 @@ export const App = () => {
   }
 
   let content;
-  //if (selectedPage == null) {
   content =(
 		<main>
       <h1>WikiVerse</h1>
 			<h2>An interesting 📚</h2>
 			<PagesList pages={pages} fetchPages={fetchPages}/>
 		</main>)
-  //)} else {
-    //content = <ArticleView slug={selectedPage} />
-    //content = <p>{selectedPage}</p>;
-  //}
-
   return content;
 }
