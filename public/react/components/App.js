@@ -28,6 +28,7 @@ export const App = () => {
   let content;
   content =(
     <body>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		  <main>
         <h1>WikiVerse</h1>
 			  <PagesList pages={pages} fetchPages={fetchPages}/>
