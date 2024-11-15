@@ -4,10 +4,14 @@ body {
 
 main {
   padding: 1rem;
-  height: 100vh;
+  height: 100%;
   max-width: 800px;
   margin: auto;
   background-color: white;
+}
+
+article {
+  white-space: pre-wrap;
 }
 
 h1, h2 {

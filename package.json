@@ -6,6 +6,7 @@
     "client-dev": "parcel public/index.html --open",
     "server-dev": "nodemon server.js",
     "seed": "node server/seed.js",
+    "seed-dnd": "node server/seeddnd.js",
     "start": "parcel build public/index.html && node server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
