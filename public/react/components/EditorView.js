@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import apiURL from '../api';
 import { ArticleForm } from './ArticleForm';
 
 export const EditorView = ({page, setEditorMode, setSelectedPage}) => {
-
     async function submitEdits(e, articleData) {
         e.preventDefault();
         //const articleData = {title, content, name, email, tags : "tag1 tag2"};
@@ -27,11 +26,12 @@ export const EditorView = ({page, setEditorMode, setSelectedPage}) => {
         }
     }
     return (<>
-    <h1>Edit: {page.title}</h1>
+    <h2>Edit: {page.title}</h2>
     <div className="article-options">
         <span><u onClick={() => setEditorMode(false)}>View</u> | <b>Edit</b></span>
     </div>
     <article>
+        {/* TODO: Make the tags carry across */}
         <ArticleForm title={page.title} content={page.content} tags={page.tags} submit={submitEdits}/>
     </article>
     </>)

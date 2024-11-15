@@ -50,3 +50,15 @@ button {
   border: 0;
   padding: 0.5em;
 }
+
+.submit-button {
+  margin: 1em 0;
+}
+
+form.all-width {
+  max-width: 700px;
+}
+
+.all-width > label,input,textarea {
+  width: 100%;
+}
