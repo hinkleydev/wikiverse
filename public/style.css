@@ -27,6 +27,10 @@ ul.page-list > li {
   margin: auto;
 }
 
+.metadata-box > p {
+  color: grey;
+}
+
 .split-box > span {
   text-decoration: underline;
 }

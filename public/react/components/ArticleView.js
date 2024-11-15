@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import apiURL from '../api';
 
 export const ArticleView = ({page, goback, setEditorMode, fetchPages}) => {
-    // The API returns everything there's absolutely no point making more requests
+    const [metadata, setMetadata] = useState('');
     async function deleteArticle() {
         const doubleCheck = confirm("You are about to delete '" + page.title + "', are you sure?");
         if (doubleCheck == false) {
@@ -16,6 +16,21 @@ export const ArticleView = ({page, goback, setEditorMode, fetchPages}) => {
         setEditorMode(false);
         goback();
     }
+    async function getMetadata() {
+        let author;
+        const res = await fetch(apiURL + '/wiki/' + page.slug);
+        const parsed = await res.json();
+        if(page.createdAt == page.updatedAt) {
+            author = (<p>Created at {page.createdAt} by {parsed.author.name} ({parsed.author.email})</p>)
+        } else {
+            author = (<><p>Created at {page.createdAt}</p><p>Updated at {page.updatedAt} by {parsed.author.name} ({parsed.author.email})</p></>)
+        }
+        const tagsHtml = parsed.tags.map((tag, id) => <span key={id}>{tag.name}, </span>)
+        setMetadata([<span>Tags: </span>,tagsHtml, author]);
+    }
+    useEffect(() => {
+        getMetadata()
+    }, [])
     return (<>
     <div className="split-wrapping">
         <div className="split-box">
@@ -32,8 +47,9 @@ export const ArticleView = ({page, goback, setEditorMode, fetchPages}) => {
         {page.content}
     </article>
     <div className="split-wrapping">
-        <div className="split-box">
-            <p>Data</p>
+        <div className="split-box metadata-box">
+            <br />
+            {metadata}
         </div>
         <div className="split-box right-lean">
             <button onClick={deleteArticle}>Delete</button>
