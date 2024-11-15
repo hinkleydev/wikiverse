@@ -13,3 +13,36 @@ main {
 h1, h2 {
   margin: 0.2em 0;
 }
+
+ul.page-list > li {
+  text-decoration: underline;
+}
+
+.split-box {
+  width: 50%;
+}
+
+.right-lean {
+  text-align: right;
+  margin: auto;
+}
+
+.split-box > span {
+  text-decoration: underline;
+}
+
+.split-wrapping {
+  display: flex;
+}
+
+.article-options {
+  padding: 0.2em 0;
+}
+
+button {
+  font-weight: 600;
+  color: white;
+  background: black;
+  border: 0;
+  padding: 0.5em;
+}
